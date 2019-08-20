@@ -12,6 +12,6 @@ func RegisterRouter() *gin.Engine {
 
 func router(app *gin.Engine) {
 	app.GET("/", func(ctx *gin.Context) {
-		ctx.JSON(200,"asdas")
+		ctx.JSON(200, "asdas")
 	})
 }

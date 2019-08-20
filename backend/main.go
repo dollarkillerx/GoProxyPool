@@ -15,7 +15,7 @@ func main() {
 	// 定时更新数据库
 	go reptile.TimingRep()
 
-	clog.Println("http://0.0.0.0"+config.MyConfig.App.Port)
+	clog.Println("http://0.0.0.0" + config.MyConfig.App.Port)
 	err := app.Run(config.MyConfig.App.Port)
 	if err != nil {
 		clog.Println(err.Error())
