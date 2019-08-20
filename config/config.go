@@ -9,37 +9,23 @@ package config
 import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
-	"log"
 	"time"
 )
 
-type myconf struct {
+type myConf struct {
 	App struct {
-		Host       string `yaml:"host"`
-		BaseUrl    string `yaml:"baseurl"`
-		Debug      bool   `yaml:"debug"`
-		BaseStatic string `yaml:"-"`
-		Language   string `yaml:"language"`
-		S3url string `yaml:""`
-	}
-	Mysql struct {
-		Dsn   string `yaml:"dsn"`
-		Cache bool   `yaml:"cache"`
-	}
-	Redis struct {
-		Maxidle     int           `yaml:"maxidle"`
-		MaxActive   int           `yaml:"max_active"`
-		IdleTimeout time.Duration `yaml:"idle_timeout"`
-		Port        string        `yaml:"port"`
+		Time       time.Duration `yaml:"time"`
+		MaxRequest int           `yaml:"max_request"`
+		Port       string        `yaml:"port"`
 	}
 }
 
 var (
-	MyConfig *myconf
+	MyConfig *myConf
 )
 
 func init() {
-	MyConfig = &myconf{}
+	MyConfig = &myConf{}
 
 	bytes, e := ioutil.ReadFile("./config.yml")
 	if e != nil {
@@ -51,9 +37,4 @@ func init() {
 		panic(e.Error())
 	}
 
-	MyConfig.App.BaseStatic = MyConfig.App.BaseUrl + "/static"
-
-	if MyConfig.App.Debug {
-		log.Println(MyConfig)
-	}
 }
