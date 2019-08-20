@@ -15,7 +15,7 @@ func Limiting(ctx *gin.Context) {
 		<-ints
 		return
 	} else {
-		ctx.JSON(411,"流量")
+		ctx.JSON(411, "流量")
 		ctx.Abort()
 	}
 

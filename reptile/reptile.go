@@ -120,18 +120,18 @@ func checkProxy(list defs.ProxyList) defs.ProxyList {
 				// 如果验证失败 则删除
 				clog.Println(e.Error())
 				log.Println("失效   ====" + v.Ip + v.Port)
-				if k+1<len(list)  {
+				if k+1 < len(list) {
 					list = append(list[:k], list[k+1:]...)
-				}else {
+				} else {
 					list = list[:k]
 				}
 			}
 
-		}else {
+		} else {
 			bytes, e := json.Marshal(v)
 
 			if e == nil {
-				memory_conn.MemoryDb.Store(1,string(bytes))
+				memory_conn.MemoryDb.Store(1, string(bytes))
 			}
 
 			log.Println("成功   ====")
