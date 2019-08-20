@@ -1,0 +1,10 @@
+
+# proxy pool
+app:
+  time: 4  # 更新数据时间 hour 默认4h
+  max_request: 10000 # 最大并发访问量 默认1w
+  port: ":8091" # 端口
+
+
+
+
